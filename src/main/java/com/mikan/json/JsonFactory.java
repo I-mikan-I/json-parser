@@ -17,7 +17,6 @@ public class JsonFactory {
     private static final Map<Character, String> escapeMap = Map.of(
             '"', "\\\"",
             '\\', "\\\\",
-            '/', "\\/",
             '\b', "\\b",
             '\f', "\\f",
             '\n', "\\n",
