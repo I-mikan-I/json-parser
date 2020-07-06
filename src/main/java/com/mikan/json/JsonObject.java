@@ -60,7 +60,7 @@ public class JsonObject extends AbstractJsonElement {
         return result.toString();
     }
 
-    Map<String, JsonElement> getContents() {
+    public Map<String, JsonElement> getContents() {
         return contents;
     }
 
