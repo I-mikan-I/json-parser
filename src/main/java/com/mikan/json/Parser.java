@@ -36,10 +36,12 @@ class Parser {
 
         final JsonObject result = new JsonObject();
         final Map<String, JsonElement> contents = result.getContents();
+        boolean isEmpty = true;
 
         tokens.remove(0);
         Token nextToken = tokens.get(0);
         while (!nextToken.isClosingBrace()) {
+            isEmpty = false;
             nextToken = tokens.get(0);
             //remove key and colon
             tokens.remove(0);
@@ -50,7 +52,7 @@ class Parser {
             nextToken = tokens.get(0);
             tokens.remove(0); //remove comma or }
         }
-        if (tokens.indexOf(closingBraceToken) == 0) //for empty Objects.
+        if (isEmpty) //for empty Objects.
             tokens.remove(0);
         return result;
     }
@@ -62,6 +64,7 @@ class Parser {
      * @return a new JsonList.
      */
     static JsonList parseList(List<Token> tokens) {
+        boolean isEmpty = true;
         final JsonList result = new JsonList();
         final List<JsonElement> contents = result.getContents();
 
@@ -69,12 +72,13 @@ class Parser {
         tokens.remove(0);
         Token nextToken = tokens.get(0);
         while (!nextToken.isClosingBracket()) {
+            isEmpty = false;
             contents.add(parseNextElement(tokens));
             nextToken = tokens.get(0);
             tokens.remove(0); //remove comma or ]
         }
 
-        if (tokens.indexOf(closingBracketToken) == 0) //for Empty lists.
+        if (isEmpty) //for empty Lists..
             tokens.remove(0);
         return result;
     }
