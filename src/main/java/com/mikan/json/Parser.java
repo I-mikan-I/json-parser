@@ -52,7 +52,7 @@ class Parser {
             nextToken = tokens.get(0);
             tokens.remove(0); //remove comma or }
         }
-        if (isEmpty) //for empty Objects.
+        if (isEmpty) //remove closing symbol for empty Objects.
             tokens.remove(0);
         return result;
     }
@@ -78,7 +78,7 @@ class Parser {
             tokens.remove(0); //remove comma or ]
         }
 
-        if (isEmpty) //for empty Lists..
+        if (isEmpty) //remove closing symbol for empty Lists.
             tokens.remove(0);
         return result;
     }

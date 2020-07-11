@@ -30,7 +30,7 @@ class Token {
      * @return true if this Token represents a Number.
      */
     boolean isNumber() {
-        return content.matches("([\\d-]\\d*(\\.\\d+)?([eE][-+]?\\d+)?)");
+        return content.matches("[\\d-]\\d*(?:\\.\\d+)?(?:[eE][-+]?\\d+)?");
     }
 
     /**
